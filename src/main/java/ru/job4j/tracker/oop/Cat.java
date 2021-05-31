@@ -1,17 +1,17 @@
 package ru.job4j.tracker.oop;
 
 public class Cat {
-   private String food;
-   private String name;
+   private String food;// поле объекта
+   private String name;// поле объекта
 
    public void show() {
        System.out.println(this.food);
        System.out.println(this.name);
    }
-   public void eat(String meat) {
+   public void eat(String meat) { // метод объекта
        this.food = meat;
    }
-   public void giveNick(String nick) {
+   public void giveNick(String nick) { // метод объекта
        this.name = nick;
    }
     public static void main(String[] args) {
