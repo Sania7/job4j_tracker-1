@@ -36,19 +36,50 @@ public class Tracker {
 
     //найти по идентификатору
     public Item findById(int id) {
-        Item rsl = null; // присваиваем null классу Item в переменную rsl
-        for (int index = 0; index < size; index++) { // проходим циклом по размеру size
-            Item item = items[index]; //присваиваем в переменную item c массива items index
-            if (item.getId() == id) {// сравниваем
-                rsl = item; // присваиваем в rsl переменную результат
-                break;
-            }
+       int index = indexOf(id);
+        return index != -1 ? items[index] : null;
+    }
+
+    // метод замены заявки
+    public boolean replace(int id, Item item) {
+        boolean rsl = false;// устанавливаем значение переменной
+        int index = indexOf(id); // находим index  с помощью метода indexOf
+        if (index != -1) { //проверяем если не отрицательный
+            items [index] = item; //приравниваем index к переменной item
+            item.setId(id); //
+            rsl = true; // возвращаем правда
         }
+
         return rsl;
     }
-    public boolean replace(int id, Item item) {
 
-        return false;
+    // метод который будет возвращать index по id
+    private int indexOf(int id) {
+        int rsl = -1;// иницилизируем счетчик
+        for (int i = 0; i < size; i++) { // проходим по размеру
+            if (items[i].getId() == id) { //сравниваем с массива items[i] index принадлежащий к id
+                // если равен id
+                rsl = i; // если равен то rsl =  i
+                break; // останавливаем цикл
+            }
+        }
+        return rsl; // возвращаем результат
+    }
+
+    //метод удаления заявки
+    public boolean delete(int id) {
+        boolean rsl = false;//инициализируем переменную
+        int index = indexOf(id); // находим переменную по методу
+        if (index != -1) { //сравниваем если не равен -1
+            int start = index + 1; // стартовая позиция
+            int dostPos = index;// index найденного элемента
+            int length = size - index;//в конце обнуляем последнюю ячейку
+            System.arraycopy(items, start, items, dostPos, length);
+            items[size - 1] = null;// уменьшить указатель position
+            size--;
+            return true;
+        }
+        return rsl;
     }
 
 }
