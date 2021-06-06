@@ -42,15 +42,13 @@ public class Tracker {
 
     // метод замены заявки
     public boolean replace(int id, Item item) {
-        boolean rsl = false;// устанавливаем значение переменной
         int index = indexOf(id); // находим index  с помощью метода indexOf
-        if (index != -1) { //проверяем если не отрицательный
-            items [index] = item; //приравниваем index к переменной item
-            item.setId(id); //
-            rsl = true; // возвращаем правда
+        boolean rsl = index != -1;  //проверяем если не отрицательный
+        if (rsl) {
+            items[index] = item; //приравниваем index к переменной item
+            item.setId(id);
         }
-
-        return rsl;
+        return rsl; // возвращаем правда
     }
 
     // метод который будет возвращать index по id
@@ -68,9 +66,9 @@ public class Tracker {
 
     //метод удаления заявки
     public boolean delete(int id) {
-        boolean rsl = false;//инициализируем переменную
         int index = indexOf(id); // находим переменную по методу
-        if (index != -1) { //сравниваем если не равен -1
+        boolean rsl = index != -1; // сразу инициализируем переменную проверкой
+        if (rsl) { //проверяем условие
             int start = index + 1; // стартовая позиция
             int dostPos = index;// index найденного элемента
             int length = size - index;//в конце обнуляем последнюю ячейку
