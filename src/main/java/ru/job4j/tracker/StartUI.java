@@ -21,10 +21,22 @@ public class StartUI {
                 Item[] items = tracker.findAll();
                 if (items.length > 0) {
                     for (Item item : items) {
-                        System.out.println(item);
+                        System.out.println(item.toString());
                     }
                 } else {
-                    System.out.println("Хранилище не содержит заявок!");
+                    System.out.println("The store does not contain orders!");
+                }
+            } else if (select == 2) {
+                System.out.println("=== Edit item ===");
+                System.out.print("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                System.out.println("Enter name: ");
+                String name = scanner.nextLine();
+                Item item = new Item(name);
+                if (tracker.replace(id, item)) {
+                    System.out.println("Application changed successfully!");
+                } else {
+                    System.out.println("Order replacement error!");
                 }
             } else if (select == 6) {
                 run = false;
