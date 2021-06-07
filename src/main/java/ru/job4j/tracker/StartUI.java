@@ -38,6 +38,15 @@ public class StartUI {
                 } else {
                     System.out.println("Order replacement error!");
                 }
+            } else if (select == 3) {
+                System.out.println("=== Delete Item ===");
+                System.out.println("Enter id: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (tracker.delete(id)) {
+                    System.out.println("Your application has been deleted!");
+                } else {
+                    System.out.println("Delete error!");
+                }
             } else if (select == 6) {
                 run = false;
             }
