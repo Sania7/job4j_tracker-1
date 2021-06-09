@@ -19,7 +19,9 @@ public class HierarchyUsage {
 
         //Ошибка в приведении типа
         Object bicycle = new Bicycle();
+
         //Код завершится с ошибкой приведения типов ClassCastException
         Car cb = (Car) bicycle;
+
     }
 }
