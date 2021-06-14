@@ -17,6 +17,6 @@ public class ReplaceAction implements UserAction{
         } else {
             System.out.println("Order replacement error!");
         }
-        return false;
+        return true;
     }
 }

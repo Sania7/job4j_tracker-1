@@ -15,6 +15,6 @@ public class DeleteAction implements UserAction{
         } else {
             System.out.println("Delete error!");
         }
-        return false;
+        return true;
     }
 }
