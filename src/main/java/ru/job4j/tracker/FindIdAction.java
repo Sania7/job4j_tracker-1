@@ -18,7 +18,7 @@ public class FindIdAction implements UserAction{
         int id = Integer.parseInt(input.askStr("Enter id: "));
         Item item = tracker.findById(id);
         if (item != null) {
-            out.println("Request number: " + item);
+            out.println(item.getName() + "," + item.getId());
         } else {
             out.println("Application with entered " + id + " not found!");
         }
