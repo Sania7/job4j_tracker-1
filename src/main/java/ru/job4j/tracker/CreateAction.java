@@ -1,6 +1,10 @@
 package ru.job4j.tracker;
 
-public class CreateAction implements UserAction{
+public class CreateAction implements UserAction {
+    private final Output out;
+    public CreateAction(Output out) {
+        this.out = out;
+    }
     @Override
     public String name() {
         return "=== Created a new Item ===";
@@ -8,11 +12,11 @@ public class CreateAction implements UserAction{
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        System.out.println("=== Created a new Item ===");
+        out.println("=== Created a new Item ===");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
-        System.out.println("Добавленная заявка " + item);
+        out.println("Добавленная заявка " + item);
         return true;
     }
 }

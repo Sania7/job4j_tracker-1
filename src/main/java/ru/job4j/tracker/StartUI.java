@@ -1,9 +1,13 @@
 package ru.job4j.tracker;
 
 
-//8. Реализация меню за счет шаблона стратегия. [#181780 #117303]
+// 9.1 Зависимость от System.out [#33568 #117291]
 public class StartUI {
 
+    private final Output out;
+    public StartUI(Output out) {
+        this.out = out;
+    }
         public void init (Input input, Tracker tracker, UserAction[] actions) {
             boolean run = true;
             while (run) {
@@ -14,24 +18,26 @@ public class StartUI {
             }
         }
         private void showMenu (UserAction[] actions) {
-            System.out.println("Menu: ");
+            out.println("Menu: ");
             for (int i = 1; i < actions.length; i++) {
-                System.out.println(i + ". " + actions[i].name());
+                out.println(i + ". " + actions[i].name());
             }
         }
         public static void main (String[]args){
+            Output output = new ConsoleOutput();
             Input input = new ConsoleInput();
             Tracker tracker = new Tracker();
             UserAction[] actions = {
-                    new CreateAction(),
-                    new CreateAction(),
-                    new FindAllAction(),
-                    new FindNameAction(),
-                    new FindIdAction(),
-                    new ReplaceAction(),
-                    new DeleteAction(),
-                    new ExitAction()};
-            new StartUI().init(input, tracker, actions);
+                    new CreateAction(output),
+                    new CreateAction(output),
+                    new FindAllAction(output),
+                    new FindNameAction(output),
+                    new FindIdAction(output),
+                    new ReplaceAction(output),
+                    new DeleteAction(output),
+                    new ExitAction(output)
+            };
+            new StartUI(output).init(input, tracker, actions);
         }
     }
 
