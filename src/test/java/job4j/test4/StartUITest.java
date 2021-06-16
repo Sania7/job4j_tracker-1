@@ -1,11 +1,10 @@
 package job4j.test4;
+
 import org.junit.Test;
 import ru.job4j.tracker.*;
 
-import java.io.OutputStream;
-import java.util.Iterator;
-
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 //9. Написать тесты на StartUI. [#785 #117304]
@@ -80,8 +79,8 @@ public class StartUITest {
     public void whenFindByName() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("0"));
-        Input in = new StubInput(new String[]{"0",String.valueOf(item.getName()),"1"});
+        Item item = tracker.add(new Item(" "));
+        Input in = new StubInput(new String[]{"0", String.valueOf(item.getName()),"1"});
         UserAction[] actions = {
                 new FindAllAction(out),
                 new ExitAction(out)
