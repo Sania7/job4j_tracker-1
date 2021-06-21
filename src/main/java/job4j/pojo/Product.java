@@ -1,4 +1,4 @@
-package ru.job4j.tracker.pojo;
+package job4j.pojo;
 
 
 //3.1. Массив с пустыми ячейками [#176470 #117282]

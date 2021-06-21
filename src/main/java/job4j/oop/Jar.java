@@ -1,4 +1,4 @@
-package ru.job4j.tracker.oop;
+package job4j.oop;
 
 
 //1.8. Состояние объекта [#167388 #117328]

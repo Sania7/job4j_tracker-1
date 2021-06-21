@@ -1,4 +1,4 @@
-package ru.job4j.tracker.validate;
+package job4j.validate;
 
 public class DivByZero {
     public static int div(int first, int second) {

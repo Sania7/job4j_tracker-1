@@ -1,4 +1,4 @@
-package ru.job4j.tracker.oop;
+package job4j.oop;
 
 //1.2. Вызов метода объекта [#166085 #117323]
 public class Student {

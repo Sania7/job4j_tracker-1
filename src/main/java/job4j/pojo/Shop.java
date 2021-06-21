@@ -1,4 +1,4 @@
-package ru.job4j.tracker.pojo;
+package job4j.pojo;
 
 public class Shop {
     public static void main(String[] args) {

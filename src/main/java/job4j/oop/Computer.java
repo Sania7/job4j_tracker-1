@@ -1,4 +1,4 @@
-package ru.job4j.tracker.oop;
+package job4j.oop;
 
 //1.7. Конструктор [#173889 #117321]
 public class Computer {

@@ -1,4 +1,4 @@
-package ru.job4j.tracker.pojo;
+package job4j.pojo;
 
 
  // 3.2. Удаление моделей из массива. [#310016 #117288]

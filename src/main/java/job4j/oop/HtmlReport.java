@@ -1,4 +1,4 @@
-package ru.job4j.tracker.oop;
+package job4j.oop;
 
 public class HtmlReport extends TextReport{
     @Override
