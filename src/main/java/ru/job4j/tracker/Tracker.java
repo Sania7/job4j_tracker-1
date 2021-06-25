@@ -1,43 +1,42 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 //5. Tracker - хранилище [#396 #117284]
 public class Tracker {
-    private final Item[] items = new Item[100];
+    private final List<Item> items = new ArrayList<>();
     private int ids = 1;
-    private int size = 0;
+
 
     // добавить заявку
     public Item add(Item item) {
         item.setId(ids++);//
-        items[size++] = item;// добавляет заявку в массив items
+        items.add(item);// добавляет заявку в массив items
         return item;
     }
 
-    // метод найти все
-    public Item[] findAll() {
-        return Arrays.copyOf(items, size);
+    public List<Item> findAll() {
+        return items;
     }
 
     // найти по имени заявку
-    public Item[] findByName(String key) {
-        Item[] copyItems = new Item[size]; // создаем результатирующий  массив
-        int copySize = 0; // счетчик
-        for (int i = 0; i < size; i++) { //проходим циклом по размеру не по всему циклу
-            Item item = this.items[i];// создаем переменную в которую помещаем индекс этого размера
-            if (item.getName().equals(key)) {// сравниваем переменную с ключем аргументом
-                copyItems[copySize++] = item;//копируем в результатирующий массив
+    public List<Item> findByName(String key) {
+        List<Item> rsl = new ArrayList<>();
+        for (Item item : items) {
+            if (item.getName().equals(key)) {
+                rsl.add(item);
             }
         }
-        return Arrays.copyOf(copyItems, copySize);//возвращаем обрезанный массив
+        return rsl;
     }
 
     //найти по идентификатору
     public Item findById(int id) {
        int index = indexOf(id);
-        return index != -1 ? items[index] : null;
+        return index != -1 ? items.get(index) : null;
     }
 
     // метод замены заявки
@@ -45,7 +44,7 @@ public class Tracker {
         int index = indexOf(id); // находим index  с помощью метода indexOf
         boolean rsl = index != -1;  //проверяем если не отрицательный
         if (rsl) {
-            items[index] = item; //приравниваем index к переменной item
+            items.set(index, item); //приравниваем index к переменной item
             item.setId(id);
         }
         return rsl; // возвращаем правда
@@ -54,8 +53,8 @@ public class Tracker {
     // метод который будет возвращать index по id
     private int indexOf(int id) {
         int rsl = -1;// иницилизируем счетчик
-        for (int i = 0; i < size; i++) { // проходим по размеру
-            if (items[i].getId() == id) { //сравниваем с массива items[i] index принадлежащий к id
+        for (int i = 0; i < items.size(); i++) { // проходим по размеру
+            if (items.get(i).getId() == id) { //сравниваем с массива items[i] index принадлежащий к id
                 // если равен id
                 rsl = i; // если равен то rsl =  i
                 break; // останавливаем цикл
@@ -66,16 +65,10 @@ public class Tracker {
 
     //метод удаления заявки
     public boolean delete(int id) {
-        int index = indexOf(id); // находим переменную по методу
-        boolean rsl = index != -1; // сразу инициализируем переменную проверкой
-        if (rsl) { //проверяем условие
-            int start = index + 1; // стартовая позиция
-            int dostPos = index;// index найденного элемента
-            int length = size - index;//в конце обнуляем последнюю ячейку
-            System.arraycopy(items, start, items, dostPos, length);
-            items[size - 1] = null;// уменьшить указатель position
-            size--;
-            return true;
+        int index = indexOf(id);
+        boolean rsl = index != -1;
+        if (rsl) {
+            items.remove(index);
         }
         return rsl;
     }
