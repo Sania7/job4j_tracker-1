@@ -1,6 +1,7 @@
 package job4j.javarash;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class List {
     public static void main(String[] args) {
@@ -9,10 +10,11 @@ public class List {
         list.add("Юлия");
         list.add("Иван");
         list.add("Вячеслав");
+        list.add("Конь");
+        list.remove(4);
         for (String s : list) {
             System.out.print(s + " ");
         }
-        System.out.println();
         ArrayList<Integer> list1 = new ArrayList<>();
         for (int i = 1; i <= 20; i++) {
             if (i % 2 == 0) {
