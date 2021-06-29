@@ -6,15 +6,23 @@ import java.util.List;
 import java.util.Map;
 
 public class BankService {
-    //Это поле содержит всех пользователей системы с привязанными к ним счетами
+    /**
+     * Это поле содержит всех пользователей системы с привязанными к ним счетами
+     */
     private Map<User, List<Account1>> users = new HashMap<>();
-
-    // метод добавления пользователя в систему
+    /**
+     * метод добавления пользователя в систему
+     * @param user принимает на вход объект user
+     */
     public void addUser(User user) {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
-    //метод должен добавить новый счет к пользователю
+    /**
+     * метод должен добавить новый счет к пользователю
+     * @param passport принимает на вход объект passport
+     * @param account1 принимает на вход объект account1
+     */
     public void addAccount(String passport, Account1 account1) {
         User user = findByPassport(passport);
         if (user != null) {
@@ -25,7 +33,11 @@ public class BankService {
         }
     }
 
-    //метод ищет пользователя по номеру паспорта
+    /**
+     * метод ищет пользователя по номеру паспорта
+     * @param passport принимаемый на вход объект
+     * @return метод возвращает true если клиент существует или false если нет
+     */
     public User findByPassport(String passport) {
         User user = null;
         for (User key : users.keySet()) {
@@ -36,7 +48,12 @@ public class BankService {
         return user;
     }
 
-    //метод ищет счет пользователя по реквизитам
+    /**
+     * метод ищет счет пользователя по реквизитам
+     * @param passport
+     * @param requisite
+     * @return
+     */
     public Account1 findByRequisite(String passport, String requisite) {
         Account1 rslAccount = null;
         User user = findByPassport(passport);
@@ -53,7 +70,15 @@ public class BankService {
         }
         return rslAccount;
     }
-    //метод перечисления денег с одного счета на другой
+    /**
+     * метод перечисления денег с одного счета на другой
+     * @param srcPassport
+     * @param srcRequisite
+     * @param destPassport
+     * @param destRequisite
+     * @param amount
+     * @return
+     */
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                   String destPassport, String destRequisite,
                                   double amount) {

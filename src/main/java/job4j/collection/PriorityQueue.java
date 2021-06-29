@@ -3,14 +3,24 @@ package job4j.collection;
 import java.util.LinkedList;
 
 /**
- * 2. Очередь с приоритетом на LinkedList [#41670 #117269]
- * Метод должен вставлять в нужную позицию элемент.
- * Позиция определяется по полю приоритет.
- * Для вставки использовать add(int index, E value)
- * @param
+ * Класс описывает работу простейшей очереди по приоритету, которая работает
+ * по принципу FIFO (first in - first out)
+ * @author STAS KOROBEYNIKOV
+ * @version 1.0
  */
 public class PriorityQueue {
+
+    /**
+     * Хранение задания осуществляется в коллекции типа LinkedList
+     */
     private LinkedList<Task> tasks = new LinkedList<>();
+
+    /**
+     *Метод принимает на вход заявку и добавляет ее в очередь.
+     * Если встречается 2 задания с одинаковым приоритетом, то в
+     * очереди они располагаются по принципу FIFO.
+     * @param task задача которая добавляется в очередь
+     */
     public void put(Task task) {
         int index = 0;
         for (Task element : tasks) {
@@ -21,6 +31,10 @@ public class PriorityQueue {
         }
         this.tasks.add(index, task);
     }
+    /**
+     * Метод позволяет получить первую задачу в очереди
+     * @return возвращает задачу из головы очереди или null если очередь пуста
+     */
     public Task take() {
         return tasks.poll();
     }
