@@ -1,7 +1,5 @@
 package job4j.strategy;
 
-import java.sql.SQLClientInfoException;
-
 public class Paint {
     public void draw(Shape shape) {
         System.out.println(shape.draw());

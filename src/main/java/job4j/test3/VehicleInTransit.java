@@ -7,7 +7,7 @@ public class VehicleInTransit {
         Vehicle plane = new Plane();
         Vehicle bus = new Bus();
 
-        Vehicle[] vehicles = new Vehicle[] {train, plane, bus};
+        Vehicle[] vehicles = new Vehicle[]{train, plane, bus};
         for (Vehicle vehicle : vehicles) {
             vehicle.move();
             vehicle.deliver();
