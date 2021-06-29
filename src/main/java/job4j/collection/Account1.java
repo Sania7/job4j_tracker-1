@@ -1,3 +1,4 @@
+
 package job4j.collection;
 
 import java.util.Objects;
@@ -29,8 +30,12 @@ public class Account1 {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Account1 account1 = (Account1) o;
         return Objects.equals(requisite, account1.requisite);
     }

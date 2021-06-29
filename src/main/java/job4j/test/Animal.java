@@ -7,7 +7,9 @@ package job4j.test;
 //2. Понижающее приведение типов (также встречается сужающее приведение, или явное).
 // Такой код называют жестко связанным (high cohesion)!!!
 public class Animal {
+
     String nameClass = getClass().getSimpleName();
+
     public void sound() {
         System.out.println(nameClass + " - издает какой - то звук!");
     }

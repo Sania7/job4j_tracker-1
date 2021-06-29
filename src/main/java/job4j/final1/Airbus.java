@@ -15,9 +15,11 @@ public class Airbus {
     public void setName(String name) {
         this.name = name;
     }
+
     public void printModel() {
         System.out.println("Модель самолета " + name);
     }
+
     public void printCountEngine() {
         int countEngine = "A380".equals(name) ? 4 : COUNT_ENGINE;
         System.out.println(countEngine);

@@ -1,8 +1,6 @@
 package ru.job4j.tracker;
 
-
-// 2. Рефакторинг - Шаблон Декоратор для валидатора. [#34117 #117309]
-public class ValidateInput implements Input {
+    public class ValidateInput implements Input {
     private final Output out;
     private final Input input;
 
@@ -15,6 +13,7 @@ public class ValidateInput implements Input {
     public String askStr(String question) {
         return input.askStr(question);
     }
+
     private boolean isNumber(String value) {
         boolean rsl = true;
         char[] check = value.toCharArray();
